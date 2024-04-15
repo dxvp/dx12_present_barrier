@@ -18,7 +18,7 @@ jobs:
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: Windows
-    if: $({{ contains(github.event.head_commit.message, '#release')}}
+    if: ${{ contains(github.event.head_commit.message, '#release') }}
     steps:
     - uses: actions/checkout@v3
 
@@ -26,12 +26,12 @@ jobs:
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       shell: cmd
-      run: cd C:/Users/dexter/source/repos/dx12_present_barrier; cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -B ./build -G "Visual Studio 17 2022" -T host=x64 -A x64
+      run: cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -B ${{github.workspace}}/build -G "Visual Studio 17 2022" -T host=x64 -A x64
 
     - name: Build
       # Build your program with the given configuration
       shell: cmd
-      run: cd C:/Users/dexter/source/repos/dx12_present_barrier; cmake --build ./build --config Release --target ALL_BUILD -j 34
+      run: cmake --build ./build --config Release --target ALL_BUILD -j 34
 
     - name: Test
       working-directory: ${{github.workspace}}/build
