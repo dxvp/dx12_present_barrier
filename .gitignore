@@ -3,3 +3,16 @@ build/
 .vscode/
 imgui.ini
 log_dx12_present_barrier.txt
+
+# cmake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
