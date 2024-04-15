@@ -39,9 +39,9 @@ jobs:
       shell: cmd
       run: cmake --build ${{github.workspace}}/build --config Release --target ALL_BUILD -j 34
 
-    - name: ZipFiles
-      # Build your program with the given configuration
-      run: Compress-Archive ${{github.workspace}}/build/bin/Release/* -d ${{github.workspace}}/build/bin/dx12_present_barrier.zip
+    #- name: ZipFiles
+    #  # Build your program with the given configuration
+    #  run: Compress-Archive ${{github.workspace}}/build/bin/Release/* -d ${{github.workspace}}/build/bin/dx12_present_barrier.zip
 
     - name: Test
       working-directory: ${{github.workspace}}/build
