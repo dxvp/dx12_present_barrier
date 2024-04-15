@@ -40,7 +40,7 @@ jobs:
 
     - name: ZipFiles
       # Build your program with the given configuration
-      run: Compress-Archive ${{github.workspace}}/build/bin/Release/* -d ${{github.workspace}}/build/bin/Release/dx12_present_barrier.zip
+      run: Compress-Archive ${{github.workspace}}/build/bin/Release/* -d ${{github.workspace}}/build/bin/dx12_present_barrier.zip
 
     - name: Test
       working-directory: ${{github.workspace}}/build
@@ -52,7 +52,7 @@ jobs:
     - name: Release
       uses: svenstaro/upload-release-action@v2
       with:
-        file: ${{github.workspace}}/build/bin/Release/
+        file: ${{github.workspace}}/build/bin/dx12_present_barrier.zip
         asset_name: dx12_present_barrier
         date: ${{ steps.date.outputs.date }}
         tag: $date Release : ${{ github.sha }}
