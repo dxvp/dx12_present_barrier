@@ -44,7 +44,7 @@ jobs:
     - name: Release
       uses: svenstaro/upload-release-action@v2
       with:
-        file: ${{github.workspace}}/build/bin/Release/*
+        file: ${{github.workspace}}/build/bin/Release/
         asset_name: dx12_present_barrier
         tag: ${{ github.ref }}
         overwrite: true
