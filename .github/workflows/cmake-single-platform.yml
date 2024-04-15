@@ -31,7 +31,7 @@ jobs:
     - name: Build
       # Build your program with the given configuration
       shell: cmd
-      run: cmake --build ./build --config Release --target ALL_BUILD -j 34
+      run: mkdir build; cmake --build ./build --config Release --target ALL_BUILD -j 34
 
     - name: Test
       working-directory: ${{github.workspace}}/build
