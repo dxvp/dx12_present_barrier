@@ -35,17 +35,11 @@ jobs:
       run: |
           cmake --build ${{github.workspace}}/build --config Release --target ALL_BUILD \
           ${{github.workspace}}/../../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*
-
-    - name: Get date
-      id: today
-      uses: Kaven-Universe/github-action-current-date-time@v1
-      with:
-        format: "YYYY-MM-DD"
     
     - name: Release
       uses: svenstaro/upload-release-action@v2
       with:
-        release_name: ${{ steps.date.outputs.today }}
+        release_name: ${{github.event.repository.updated_at }}
         file: ${{github.workspace}}/build/bin/dx12_present_barrier.zip
         asset_name: dx12_present_barrier.zip
         tag: ${{ github.ref }}
