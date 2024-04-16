@@ -46,9 +46,8 @@ jobs:
       run: ctest -C ${{env.BUILD_TYPE}}
       
     - name: sleep for resting zip files
-      uses: jakejarvis/wait-action@master
-      with:
-        time: '5s'
+      shell: cmd
+      run: timeout 5
   
     - name: Release
       uses: svenstaro/upload-release-action@v2
