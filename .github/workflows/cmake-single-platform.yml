@@ -35,10 +35,18 @@ jobs:
       run: |
           cmake --build ${{github.workspace}}/build --config Release --target ALL_BUILD \
           ${{github.workspace}}/../../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*
-      
+
+    - name: Get Date
+      shell: cmd
+      id: date
+      run: echo "today=%DATE%" >> "$GITHUB_OUTPUT"
+    
     - name: Release
       uses: svenstaro/upload-release-action@v2
+      env:
+        Date: ${{ steps.date.outputs.today }}
       with:
+        release_name: "$Date"
         file: ${{github.workspace}}/build/bin/dx12_present_barrier.zip
         asset_name: dx12_present_barrier.zip
         tag: ${{ github.ref }}
