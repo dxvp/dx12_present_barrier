@@ -55,6 +55,6 @@ jobs:
       with:
         file: ${{github.workspace}}/build/bin/dx12_present_barrier.zip
         asset_name: dx12_present_barrier
-        tag: ${{ steps.date.outputs.date }} Release ${{ github.sha }}
+        tag: "${{ steps.date.outputs.date }} Release ${{ github.sha }}"
         overwrite: true
         body: "test release text"
