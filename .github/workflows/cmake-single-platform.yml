@@ -34,6 +34,10 @@ jobs:
       shell: cmd
       run: cmake --build ${{github.workspace}}/build --config Release --target ALL_BUILD -j 34
 
+    - name: sleep for resting zip files
+      shell: powershell
+      run: Start-Sleep -s 10
+
     - name: ZipFiles
       shell: cmd
       run: ${{github.workspace}}/../../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*;
@@ -44,10 +48,6 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       shell: cmd
       run: ctest -C ${{env.BUILD_TYPE}}
-      
-    - name: sleep for resting zip files
-      shell: cmd
-      run: timeout 5
   
     - name: Release
       uses: svenstaro/upload-release-action@v2
@@ -55,5 +55,5 @@ jobs:
         file: ${{github.workspace}}/build/bin/dx12_present_barrier.zip
         asset_name: dx12_present_barrier
         tag: ${{ github.ref }}
-        overwrite: true
+        overwrite: false
         body: "test release text"
