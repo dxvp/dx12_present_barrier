@@ -22,11 +22,6 @@ jobs:
     if: ${{ contains(github.event.head_commit.message, '#release') || github.event_name == 'workflow_dispatch'}}
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Get current date
-      shell: cmd
-      id: date
-      run: date /t >> "$GITHUB_OUTPUT"
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
@@ -55,6 +50,6 @@ jobs:
       with:
         file: ${{github.workspace}}/build/bin/dx12_present_barrier.zip
         asset_name: dx12_present_barrier
-        tag: ${{ steps.date.outputs.date }}
+        tag: ${{ github.sha }}
         overwrite: true
         body: "test release text"
