@@ -40,7 +40,7 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         file: ${{github.workspace}}/build/bin/dx12_present_barrier.zip
-        asset_name: dx12_present_barrier
+        asset_name: dx12_present_barrier.zip
         tag: ${{ github.ref }}
         overwrite: true
         body: "test release text"
