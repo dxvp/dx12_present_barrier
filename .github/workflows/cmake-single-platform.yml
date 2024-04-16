@@ -35,12 +35,13 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config Release --target ALL_BUILD -j 34
 
     - name: sleep for resting zip files
-      shell: powershell
-      run: Start-Sleep -s 10
+      uses: GuillaumeFalourd/wait-sleep-action@v1
+      with:
+        time: '10'
 
     - name: ZipFiles
       shell: cmd
-      run: ${{github.workspace}}/../../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*;
+      run: ${{github.workspace}}/../../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*
 
     - name: Test
       working-directory: ${{github.workspace}}/build
