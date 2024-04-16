@@ -32,7 +32,7 @@ jobs:
     - name: Build
       # Build your program with the given configuration
       shell: cmd
-      run: cmake --build ${{github.workspace}}/build --config Release --target ALL_BUILD -j 34; ${{github.workspace}}/../../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*;
+      run: cmake --build ${{github.workspace}}/build --config Release --target ALL_BUILD; ${{github.workspace}}/../../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*;
 
     #- name: ZipFiles
       #shell: cmd
