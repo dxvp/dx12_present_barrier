@@ -41,7 +41,7 @@ jobs:
 
     - name: ZipFiles
       shell: cmd
-      run: ${{github.workspace}}/../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*;
+      run: ${{github.workspace}}/../../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*;
 
     - name: Test
       working-directory: ${{github.workspace}}/build
