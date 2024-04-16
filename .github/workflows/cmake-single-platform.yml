@@ -36,10 +36,11 @@ jobs:
           cmake --build ${{github.workspace}}/build --config Release --target ALL_BUILD \
           ${{github.workspace}}/../../7za.exe a -tzip ${{github.workspace}}/build/bin/dx12_present_barrier.zip ${{github.workspace}}/build/bin/Release/*
 
-    - name: Get Date
-      shell: cmd
-      id: date
-      run: echo "today=%DATE%" >> "$GITHUB_OUTPUT"
+    - name: Get date
+      id: today
+      uses: Kaven-Universe/github-action-current-date-time@v1
+      with:
+        format: "YYYY-MM-DD"
     
     - name: Release
       uses: svenstaro/upload-release-action@v2
