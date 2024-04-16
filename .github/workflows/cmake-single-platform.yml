@@ -45,6 +45,11 @@ jobs:
       shell: cmd
       run: ctest -C ${{env.BUILD_TYPE}}
       
+    - name: sleep for resting zip files
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '5s'
+  
     - name: Release
       uses: svenstaro/upload-release-action@v2
       with:
