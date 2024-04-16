@@ -46,7 +46,7 @@ jobs:
       env:
         Date: ${{ steps.date.outputs.today }}
       with:
-        release_name: "$Date"
+        release_name: $Date
         file: ${{github.workspace}}/build/bin/dx12_present_barrier.zip
         asset_name: dx12_present_barrier.zip
         tag: ${{ github.ref }}
